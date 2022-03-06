@@ -2,7 +2,7 @@
 
 ## 用途
 
-匯出 Oracle 資料庫下單一 Schema 的 package。
+匯出Oracle資料庫下單一Schema的package。
 
 ## 安裝
 
