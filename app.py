@@ -1,4 +1,4 @@
-# Oracle
+# Oracle Package To File
 from itertools import groupby
 import os
 
@@ -6,11 +6,7 @@ from py_logger.logger import log
 from oracle_package_to_file.dao.oracle_dao import OracleDao
 from oracle_package_to_file.config.config import get_ap_logger
 from oracle_package_to_file.config.config import (
-    DATA_SOURCE_USER,
-    DATA_SOURCE_PASSWORD,
-    DATA_SOURCE_HOST,
-    DATA_SOURCE_PORT,
-    DATA_SOURCE_SCHEMA_NAME,
+    DB_CONFIG,
     PKG_DIR,
 )
 
@@ -54,15 +50,7 @@ def to_file(data):
 # 主程式
 @log(logger=logger)
 def main():
-    inputs = {
-        "user": DATA_SOURCE_USER,
-        "password": DATA_SOURCE_PASSWORD,
-        "host": DATA_SOURCE_HOST,
-        "port": DATA_SOURCE_PORT,
-        "schema_name": DATA_SOURCE_SCHEMA_NAME,
-    }
-
-    with OracleDao(inputs) as oracleDao:
+    with OracleDao(DB_CONFIG) as oracleDao:
         data_list = oracleDao.list_package_line()
         data_list = to_package_group_list(data_list)
         to_file(data_list)

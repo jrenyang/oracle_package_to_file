@@ -29,5 +29,13 @@ DATA_SOURCE_PASSWORD = get_param("data_source", "DATA_SOURCE_PASSWORD")
 DATA_SOURCE_HOST = get_param("data_source", "DATA_SOURCE_HOST")
 DATA_SOURCE_PORT = int(get_param("data_source", "DATA_SOURCE_PORT"))
 
+DB_CONFIG = {
+    "user": DATA_SOURCE_USER,
+    "password": DATA_SOURCE_PASSWORD,
+    "host": DATA_SOURCE_HOST,
+    "port": DATA_SOURCE_PORT,
+    "schema_name": DATA_SOURCE_SCHEMA_NAME,
+}
+
 def get_ap_logger(__name__):
     return get_logger(__name__, LOGS_DIR, LOG_FILE, True)
